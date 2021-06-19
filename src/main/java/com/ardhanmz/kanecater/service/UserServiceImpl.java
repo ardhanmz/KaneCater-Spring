@@ -1,4 +1,4 @@
-package com.ardhanmz.kanecater.model.service;
+package com.ardhanmz.kanecater.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;

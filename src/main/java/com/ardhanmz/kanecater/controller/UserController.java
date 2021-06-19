@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ardhanmz.kanecater.model.MsUser;
-import com.ardhanmz.kanecater.model.service.UserService;
+import com.ardhanmz.kanecater.service.UserService;
 import com.ardhanmz.kanecater.request.UserSaveRequest;
 import com.ardhanmz.kanecater.response.UserListResponse;
 import com.ardhanmz.kanecater.util.Global;
