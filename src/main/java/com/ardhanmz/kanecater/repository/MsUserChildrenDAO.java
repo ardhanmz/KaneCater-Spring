@@ -2,16 +2,16 @@ package com.ardhanmz.kanecater.repository;
 
 import java.util.List;
 
-import com.ardhanmz.kanecater.model.MsUserChildren;
+import com.ardhanmz.kanecater.model.MsUserChildrenEntity;
 
 public interface MsUserChildrenDAO {
-	List<MsUserChildren> getAll();
+	List<MsUserChildrenEntity> getAll();
 
-	MsUserChildren getOneById(int uuidMsUserChildren);
+	MsUserChildrenEntity getOneById(int uuidMsUserChildren);
 
-	void save(MsUserChildren msUser);
+	void save(MsUserChildrenEntity msUser);
 
-	void update(MsUserChildren msUser);
+	void update(MsUserChildrenEntity msUser);
 
 	void delete(int uuidMsUserChildren);
 }

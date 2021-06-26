@@ -2,30 +2,30 @@ package com.ardhanmz.kanecater.repository;
 
 import java.util.List;
 
-import com.ardhanmz.kanecater.model.MsUserChildren;
+import com.ardhanmz.kanecater.model.MsUserChildrenEntity;
 
 public class MsUserChildrenDaoImpl implements MsUserChildrenDAO{
 
 	@Override
-	public List<MsUserChildren> getAll() {
+	public List<MsUserChildrenEntity> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MsUserChildren getOneById(int uuidMsUserChildren) {
+	public MsUserChildrenEntity getOneById(int uuidMsUserChildren) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(MsUserChildren msUser) {
+	public void save(MsUserChildrenEntity msUserChildrenEntity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(MsUserChildren msUser) {
+	public void update(MsUserChildrenEntity msUserChildrenEntity) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -3,13 +3,12 @@ package com.ardhanmz.kanecater.service;
 import java.util.List;
 import javax.persistence.EntityManager;
 
+import com.ardhanmz.kanecater.model.MsUserEntity;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.ardhanmz.kanecater.model.MsUser;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,39 +23,38 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public List<MsUser> getAll() {
-		Query<MsUser> query = getSession().createQuery("from MsUser", MsUser.class);
+	public List<MsUserEntity> getAll() {
+		Query<MsUserEntity> query = getSession().createQuery("from MsUserEntity", MsUserEntity.class);
 		return query.getResultList();
 	}
 
 	@Transactional
 	@Override
-	public MsUser getOneById(int uuidMsUser) {
-		String hibernateQuery = "FROM MsUser MU WHERE MU.UUID_MS_USER = :uuidMsUser";
-		Query<MsUser> query = getSession().createQuery(hibernateQuery, MsUser.class);
+	public MsUserEntity getOneById(int uuidMsUser) {
+		String hibernateQuery = "FROM MsUserEntity WHERE MsUserEntity.uuidMsUser = :uuidMsUser";
+		Query<MsUserEntity> query = getSession().createQuery(hibernateQuery, MsUserEntity.class);
 		query.setParameter(uuidMsUser, uuidMsUser);
 		return query.getSingleResult();
 	}
 
 	@Transactional
 	@Override
-	public void save(MsUser msUser) {
+	public void save(MsUserEntity msUser) {
 		getSession().save(msUser);
 	}
 
 	@Transactional
 	@Override
-	public void update(MsUser msUser) {
+	public void update(MsUserEntity msUser) {
 		getSession().update(msUser);
-
 	}
 
 	@Transactional
 	@Override
 	public int delete(int uuidMsUser) {
 		int result = 99;
-		String hibernateQuery = "DELETE FROM MsUser MU WHERE MU.uuidMsUser = :uuidMsUser";
-		Query<MsUser> query = getSession().createQuery(hibernateQuery, MsUser.class);
+		String hibernateQuery = "DELETE FROM MsUserEntity WHERE MsUserEntity.uuidMsUser = :uuidMsUser";
+		Query<MsUserEntity> query = getSession().createQuery(hibernateQuery, MsUserEntity.class);
 		query.setParameter(uuidMsUser, uuidMsUser);
 		try {
 			result = query.executeUpdate();
