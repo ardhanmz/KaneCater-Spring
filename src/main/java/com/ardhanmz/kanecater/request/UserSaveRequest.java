@@ -3,18 +3,22 @@ package com.ardhanmz.kanecater.request;
 import com.ardhanmz.kanecater.model.MsUserEntity;
 import com.ardhanmz.kanecater.util.http.RequestType;
 import com.google.gson.annotations.SerializedName;
+import org.apache.catalina.User;
+
+import java.sql.Timestamp;
 
 public class UserSaveRequest extends RequestType{
-	@SerializedName("userdata")
-	private MsUserEntity userData;
+	@SerializedName("userData")
+	private UserData userData;
 
-	public MsUserEntity getUserData() {
+	public UserData getUserData() {
 		return userData;
 	}
 
-	public void setUserData(MsUserEntity userData) {
+	public void setUserData(UserData userData) {
 		this.userData = userData;
 	}
 	
 	
 }
+

@@ -31,10 +31,14 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public MsUserEntity getOneById(int uuidMsUser) {
-		String hibernateQuery = "FROM MsUserEntity WHERE MsUserEntity.uuidMsUser = :uuidMsUser";
-		Query<MsUserEntity> query = getSession().createQuery(hibernateQuery, MsUserEntity.class);
-		query.setParameter(uuidMsUser, uuidMsUser);
-		return query.getSingleResult();
+		String hibernateQuery = "FROM MsUserEntity WHERE uuidMsUser = :uuidMsUser";
+		Query query = getSession().createQuery(hibernateQuery);
+		query.setParameter("uuidMsUser", uuidMsUser);
+		if (query.list().isEmpty()){
+			return null;
+		} else {
+			return (MsUserEntity) query.list().get(0);
+		}
 	}
 
 	@Transactional
@@ -53,9 +57,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int delete(int uuidMsUser) {
 		int result = 99;
-		String hibernateQuery = "DELETE FROM MsUserEntity WHERE MsUserEntity.uuidMsUser = :uuidMsUser";
-		Query<MsUserEntity> query = getSession().createQuery(hibernateQuery, MsUserEntity.class);
-		query.setParameter(uuidMsUser, uuidMsUser);
+		String hibernateQuery = "DELETE FROM MsUserEntity WHERE uuidMsUser = :uuidMsUser";
+		Query query = getSession().createQuery(hibernateQuery);
+		query.setParameter("uuidMsUser", uuidMsUser);
 		try {
 			result = query.executeUpdate();
 		} catch (Exception exc) {
