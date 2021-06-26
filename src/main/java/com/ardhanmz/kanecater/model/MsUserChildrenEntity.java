@@ -21,13 +21,7 @@ public class MsUserChildrenEntity {
     private String childrenSchool;
     private String childrenClass;
     private byte[] childrenImage;
-    private String birthDate;
-    private String classSchool;
-    private String height;
-    private byte[] image;
-    private String school;
-    private String sex;
-    private String weight;
+    private MsUserEntity msUserByUuidMsUser;
 
     @Id
     @Column(name = "UUID_MS_USER_CHILDREN")
@@ -159,89 +153,29 @@ public class MsUserChildrenEntity {
         this.childrenImage = childrenImage;
     }
 
-    @Basic
-    @Column(name = "birth_date")
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    @Basic
-    @Column(name = "class_school")
-    public String getClassSchool() {
-        return classSchool;
-    }
-
-    public void setClassSchool(String classSchool) {
-        this.classSchool = classSchool;
-    }
-
-    @Basic
-    @Column(name = "height")
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    @Basic
-    @Column(name = "image")
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    @Basic
-    @Column(name = "school")
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    @Basic
-    @Column(name = "sex")
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    @Basic
-    @Column(name = "weight")
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MsUserChildrenEntity that = (MsUserChildrenEntity) o;
-        return uuidMsUserChildren == that.uuidMsUserChildren && Objects.equals(dtmCrt, that.dtmCrt) && Objects.equals(usrCrt, that.usrCrt) && Objects.equals(dtmUpd, that.dtmUpd) && Objects.equals(usrUpd, that.usrUpd) && Objects.equals(childrenName, that.childrenName) && Objects.equals(childrenBirthdate, that.childrenBirthdate) && Objects.equals(childrenSex, that.childrenSex) && Objects.equals(childrenWeight, that.childrenWeight) && Objects.equals(childrenHeight, that.childrenHeight) && Objects.equals(childrenSchool, that.childrenSchool) && Objects.equals(childrenClass, that.childrenClass) && Arrays.equals(childrenImage, that.childrenImage) && Objects.equals(birthDate, that.birthDate) && Objects.equals(classSchool, that.classSchool) && Objects.equals(height, that.height) && Arrays.equals(image, that.image) && Objects.equals(school, that.school) && Objects.equals(sex, that.sex) && Objects.equals(weight, that.weight);
+        return uuidMsUserChildren == that.uuidMsUserChildren && Objects.equals(dtmCrt, that.dtmCrt) && Objects.equals(usrCrt, that.usrCrt) && Objects.equals(dtmUpd, that.dtmUpd) && Objects.equals(usrUpd, that.usrUpd) && Objects.equals(childrenName, that.childrenName) && Objects.equals(childrenBirthdate, that.childrenBirthdate) && Objects.equals(childrenSex, that.childrenSex) && Objects.equals(childrenWeight, that.childrenWeight) && Objects.equals(childrenHeight, that.childrenHeight) && Objects.equals(childrenSchool, that.childrenSchool) && Objects.equals(childrenClass, that.childrenClass) && Arrays.equals(childrenImage, that.childrenImage);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(uuidMsUserChildren, dtmCrt, usrCrt, dtmUpd, usrUpd, childrenName, childrenBirthdate, childrenSex, childrenWeight, childrenHeight, childrenSchool, childrenClass, birthDate, classSchool, height, school, sex, weight);
+        int result = Objects.hash(uuidMsUserChildren, dtmCrt, usrCrt, dtmUpd, usrUpd, childrenName, childrenBirthdate, childrenSex, childrenWeight, childrenHeight, childrenSchool, childrenClass);
         result = 31 * result + Arrays.hashCode(childrenImage);
-        result = 31 * result + Arrays.hashCode(image);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "UUID_MS_USER", referencedColumnName = "UUID_MS_USER")
+    public MsUserEntity getMsUserByUuidMsUser() {
+        return msUserByUuidMsUser;
+    }
+
+    public void setMsUserByUuidMsUser(MsUserEntity msUserByUuidMsUser) {
+        this.msUserByUuidMsUser = msUserByUuidMsUser;
     }
 }
